@@ -1,0 +1,20 @@
+- name: установка ceph-deploy для первого хоста из группы
+  hosts: ceph-claster[0]
+  
+  tasks:
+  
+   - name: создание директории для конфигурации ceph
+     file: path=/opt/ceph state=directory
+  
+   - name: установка компонентов для кластера
+     shell: ceph-deploy --username {{ceph_user}} --release  {{ceph_release}} install {{ansible_default_ipv4.address}}
+     args:
+       chdir: /opt/ceph
+    
+   - name: создание кластера
+     shell: ceph-deploy --cluster {{cluster_name}} --username {{ceph_user}} new {{ansible_default_ipv4.address}}
+     args:
+       chdir: /opt/ceph
+    
+
+  

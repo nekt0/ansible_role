@@ -1,0 +1,14 @@
+---
+- name: добавление пользователя ceph, создание ssh ключа
+  user:
+    name: {{ceph_user}}
+    shell: /bin/bash
+    groups: {{ceph_user}}
+    append: yes
+    password: {{user_password}}
+    generate_ssh_key: yes
+    ssh_key_bits: 2048
+    ssh_key_file: .ssh/id_rsa
+    
+- name: Добавление пользователя {{ceph_user}} в sudories с правами ALL = (root) NOPASSWD:ALL
+  shell: echo "{{ceph_user}} ALL = (root) NOPASSWD:ALL" >> /etc/sudoers

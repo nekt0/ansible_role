@@ -1,0 +1,5 @@
+---
+- name: Playbook установки ceph
+  hosts: ceph-cluster
+  roles: 
+    - ceph-install

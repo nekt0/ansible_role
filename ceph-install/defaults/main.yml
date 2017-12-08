@@ -1,0 +1,5 @@
+---
+ceph_release: hammer
+ceph_user: cephuser
+user_password: 123123
+cluster_name: ceph

@@ -1,0 +1,9 @@
+---
+- name: Подключение конфигурирование репозитория
+  include: debian_community_repository.yml
+  
+ - name: Установка пакета ceph-deploy 
+    apt:
+     name: "ceph-deploy"
+     update_cache: yes
+     state: present

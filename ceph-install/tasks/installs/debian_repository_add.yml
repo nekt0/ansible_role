@@ -1,0 +1,11 @@
+---
+- name: Добавление ключа
+  apt_key:
+    data: "{{ lookup('file', role_path+'/files/release.asc') }}"
+    state: present
+
+- name: Добавление репозитория
+  apt_repository:
+    repo: "https://download.ceph.com/debian-{{ceph_release}}/ {{ansible_lsb.codename}} main"
+    state: present
+  changed_when: false

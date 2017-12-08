@@ -1,0 +1,7 @@
+---
+- name: установка ntp
+  apt: 
+    name: ntp
+    state: absent
+    force: yes 
+    update_cache: yes

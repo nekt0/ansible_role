@@ -1,0 +1,17 @@
+---
+- name: Подключение задачи для установки ntp сервера
+  include: "misc/ntp_install.yml"
+  
+- name: Подключение задачи для создания пользователя ceph
+  include: "misc/user_add.yml"
+  
+- name: Подключение задачи для установки ceph-deploy
+  include: "installs/install_ceph_deploy.yml" 
+  when:
+    - ansible_os_family == 'Debian'
+
+- name: Подключение задачи для установки ноды ceph
+  include: "installs/ceph_deploy_setup.yml" 
+  when:
+    - ansible_os_family == 'Debian'
+  
